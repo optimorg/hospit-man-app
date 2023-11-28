@@ -14,6 +14,7 @@ import { PatientComponent } from './components/dashboard/patient/patient.compone
 import { SideBarComponent } from './components/dashboard/side-bar/side-bar.component';
 import { MaterialModule } from './material/material/material.module';
 import { AddDoctorComponent } from './components/dashboard/doctor/add-doctor/add-doctor.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,8 @@ import { AddDoctorComponent } from './components/dashboard/doctor/add-doctor/add
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [],
