@@ -1,3 +1,8 @@
 .add-doc {
     color: #3f51b5;
 }
+
+.mat-mdc-card.mdc-card:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
