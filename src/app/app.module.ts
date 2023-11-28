@@ -13,13 +13,15 @@ import { DoctorComponent } from './components/dashboard/doctor/doctor.component'
 import { PatientComponent } from './components/dashboard/patient/patient.component';
 import { SideBarComponent } from './components/dashboard/side-bar/side-bar.component';
 import { MaterialModule } from './material/material/material.module';
+import { AddDoctorComponent } from './components/dashboard/doctor/add-doctor/add-doctor.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     DoctorComponent,
     PatientComponent,
-    SideBarComponent
+    SideBarComponent,
+    AddDoctorComponent
   ],
   imports: [
     BrowserModule,
