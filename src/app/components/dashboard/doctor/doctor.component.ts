@@ -9,11 +9,10 @@ import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 export class DoctorComponent implements OnInit {
   
   constructor(
-    public dialog: MatDialog
+    public dialog : MatDialog
   ) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
   }
 
   addDoctor() {
@@ -25,6 +24,12 @@ export class DoctorComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(AddDoctorComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(data => {
+      if(data) {
+        console.log("Registered doctor: ", data );
+      }
+    })
   }
-  
+
 }
