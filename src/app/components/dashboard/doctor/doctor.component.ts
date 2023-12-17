@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddDoctorComponent } from './add-doctor/add-doctor.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataService } from 'src/shared/service/data.service';
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
@@ -9,7 +11,9 @@ import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 export class DoctorComponent implements OnInit {
   
   constructor(
-    public dialog : MatDialog
+    public dialog : MatDialog,
+    private dataApi: DataService,
+    private _snackBar : MatSnackBar,
   ) { }
 
   ngOnInit(): void { 
@@ -27,9 +31,14 @@ export class DoctorComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
-        console.log("Registered doctor: ", data );
+        this.dataApi.addDoctor(data);
+        this.openSnackBar("Registration of doctor was successful", "OK");
       }
     })
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 }
