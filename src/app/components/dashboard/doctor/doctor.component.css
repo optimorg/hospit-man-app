@@ -6,3 +6,16 @@
     transform: scale(1.03);
     cursor: pointer;
 }
+
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
