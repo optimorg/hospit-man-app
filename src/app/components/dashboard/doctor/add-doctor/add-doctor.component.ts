@@ -17,7 +17,7 @@ export class AddDoctorComponent implements OnInit {
   gender !: string;
   department !: string;
   birthdate !: Date; 
-  quaifications !: string;
+  quaification !: string;
 
   departments : string[] = ['Orthopedics','Cardiology','Otorhinolaryngology','Ophthalmology','Psychiatry','Internal medicine','Radiology','Surgery','Pediatrics','Neurology','Urology','Anesthesiology','Nephrology','Neurosurgery','Gastroenterology','Pulmonology','General surgery','Intensive care medicine','Oncology','Pathology','Emergency medicine','Neonatology','Hematology','Pharmacy','Physical medicine and rehabilitation','Vascular surgery','Geriatrics','Gynaecology','Cardiac surgery','Outpatient department','Nuclear medicine','Infectious diseases','Clinical pathology','Intensive care unit','operating room','Casualty department'];
 
@@ -39,7 +39,7 @@ export class AddDoctorComponent implements OnInit {
       gender : ['', Validators.required],
       department : ['', Validators.required],
       birthdate : ['', Validators.required],
-      quaifications : ['', Validators.required]
+      qualification : ['', Validators.required]
     })
   }
 
