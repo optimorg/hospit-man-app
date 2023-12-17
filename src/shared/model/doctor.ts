@@ -6,5 +6,5 @@ export interface Doctor {
     qualification : string;
     gender : string;
     department: string;
-    birthdate: string;
+    birthdate: Date;
 }
