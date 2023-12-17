@@ -40,8 +40,14 @@ export class AddDoctorComponent implements OnInit {
       department : ['', Validators.required],
       birthdate : ['', Validators.required],
       quaifications : ['', Validators.required]
-
     })
   }
 
+  cancelRegistration() {
+    this.dialogRef.close();
+  }
+
+  registerDoctor() {
+    this.dialogRef.close(this.form.value);
+  }
 }
