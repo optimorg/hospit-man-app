@@ -18,6 +18,6 @@ export class DataService {
   }
 
   updateDoctor(doctor : any) {
-    return this.afs.doc("Doctor").update(doctor);
+    return this.afs.doc("Doctor/"+doctor.id).update(doctor);
   }
 }
