@@ -14,8 +14,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 })
 export class DoctorComponent implements OnInit {
   doctorsArr : Doctor[] = [];
-  displayedColumns: string[] = ['name', 'mobile', 'email', 'department', 'gender', 'action'];
-  dataSource!: MatTableDataSource<Doctor>;
+  displayedColumns : string[] = ['name', 'mobile', 'email', 'department', 'gender', 'action'];
+  dataSource !: MatTableDataSource<Doctor>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -35,7 +35,8 @@ export class DoctorComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      title: 'Register doctor'
+      title: 'Register doctor',
+      buttonName : "Register"
     }
 
     const dialogRef = this.dialog.open(AddDoctorComponent, dialogConfig);
@@ -44,6 +45,29 @@ export class DoctorComponent implements OnInit {
       if(data) {
         this.dataApi.addDoctor(data);
         this.openSnackBar("Registration of doctor was successful", "OK");
+      }
+    })
+  }
+
+  editDoctor(row : any) {
+    if (row.id == null || row.name == null) {
+      console.log("Row id or name is null")
+      return;
+    }
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = row;
+    dialogConfig.data.title = "Edit doctor";
+    dialogConfig.data.buttonName = "Update";
+    dialogConfig.data.birthdate = row.birthdate.toDate(); 
+
+    const dialogRef = this.dialog.open(AddDoctorComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(data => {
+      if(data) {
+        this.dataApi.updateDoctor(data);
+        this.openSnackBar("Doctor information updated succesffuly.", "OK");
       }
     })
   }
