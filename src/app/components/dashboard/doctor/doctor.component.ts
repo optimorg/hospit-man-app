@@ -7,6 +7,7 @@ import { Doctor } from 'src/shared/model/doctor';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
@@ -68,6 +69,26 @@ export class DoctorComponent implements OnInit {
       if(data) {
         this.dataApi.updateDoctor(data);
         this.openSnackBar("Doctor information updated succesffuly.", "OK");
+      }
+    })
+  }
+
+  deleteDoctor(row : any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      title: 'Delete doctor',
+      buttonName : "Delete",
+      doctorName: row.name
+    }
+
+    const dialogRef = this.dialog.open(DeleteDoctorComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(data => {
+      if(data) {
+        this.dataApi.deleteDoctor(row.id);
+        this.openSnackBar("Doctor deleted successfully.", "OK");
       }
     })
   }
