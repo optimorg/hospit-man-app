@@ -17,7 +17,9 @@ export class AddDoctorComponent implements OnInit {
   gender !: string;
   department !: string;
   birthdate !: Date; 
-  quaification !: string;
+  qualification !: string;
+  id !: string;
+  buttonName !: string;
 
   departments : string[] = ['Orthopedics','Cardiology','Otorhinolaryngology','Ophthalmology','Psychiatry','Internal medicine','Radiology','Surgery','Pediatrics','Neurology','Urology','Anesthesiology','Nephrology','Neurosurgery','Gastroenterology','Pulmonology','General surgery','Intensive care medicine','Oncology','Pathology','Emergency medicine','Neonatology','Hematology','Pharmacy','Physical medicine and rehabilitation','Vascular surgery','Geriatrics','Gynaecology','Cardiac surgery','Outpatient department','Nuclear medicine','Infectious diseases','Clinical pathology','Intensive care unit','operating room','Casualty department'];
 
@@ -26,20 +28,28 @@ export class AddDoctorComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data : any,
     private dialogRef : MatDialogRef<AddDoctorComponent>
     ) {
+      this.id = data.id;
       this.title = data.title;
-
+      this.name = data.name;
+      this.mobile = data.mobile;
+      this.email = data.email;
+      this.gender = data.gender;
+      this.department = data.department;
+      this.birthdate = data.birthdate;
+      this.qualification = data.qualification;
+      this.buttonName = data.buttonName;
      }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      id : ['',[]],
-      name : ['', [Validators.required]],
-      mobile : ['', Validators.required, Validators.maxLength(10), Validators.minLength(10)],
-      email : ['', Validators.required, Validators.email],
-      gender : ['', Validators.required],
-      department : ['', Validators.required],
-      birthdate : ['', Validators.required],
-      qualification : ['', Validators.required]
+      id : [this.id,[]],
+      name : [this.name, [Validators.required]],
+      mobile : [this.mobile, [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      email : [this.email, [Validators.required, Validators.email]],
+      gender : [this.gender, Validators.required],
+      department : [this.department, Validators.required],
+      birthdate : [this.birthdate, Validators.required],
+      qualification : [this.qualification, Validators.required]
     })
   }
 
