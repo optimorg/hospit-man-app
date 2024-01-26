@@ -1,10 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { DataService } from 'src/shared/service/data.service';
 
 @Component({
   selector: 'app-view-doctor',
   templateUrl: './view-doctor.component.html',
   styleUrls: ['./view-doctor.component.css']
 })
-export class ViewDoctorComponent {
+export class ViewDoctorComponent implements OnInit {
+  
+  id !: any;
+  doctorObj !: any;
 
+  constructor(
+    private route : ActivatedRoute,
+    private dataApi : DataService
+    ) { 
+    this.id = route.snapshot.paramMap.get('id');
+  }
+  
+  ngOnInit(): void {
+    this.getDoctorById();
+  }
+
+  getDoctorById() {
+    this.dataApi.getDoctorById(this.id).subscribe(res => {
+      this.doctorObj = res;
+      console.log(this.doctorObj);
+    })
+  }
 }

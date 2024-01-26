@@ -24,4 +24,8 @@ export class DataService {
   deleteDoctor(id : string) {
     return this.afs.doc("Doctor/"+id).delete();
   }
+
+  getDoctorById(id : string) {
+    return this.afs.doc("Doctor/"+id).valueChanges();
+  }
 }

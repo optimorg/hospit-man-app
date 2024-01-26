@@ -50,6 +50,10 @@ export class DoctorComponent implements OnInit {
     })
   }
 
+  viewDoctor(row : any) {
+    window.open('/dashboard/doctor/'+row.id,'_blank');
+  }
+
   editDoctor(row : any) {
     if (row.id == null || row.name == null) {
       console.log("Row id or name is null")
